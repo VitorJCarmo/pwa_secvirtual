@@ -18,7 +18,11 @@ export class MainPage {
   this.getData();
   console.log(this.data);
   }
+
   getData(){
-    this.data = this.main.getData()
+    this.main.getData()
+    .then(data => {
+      this.data = data;
+    });
 }
 }

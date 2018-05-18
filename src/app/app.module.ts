@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MainPage } from '../pages/main/main';
+import { LoginPage } from '../pages/login/login';
 import { RegisterComponent } from '../components/register/register';
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -22,7 +23,8 @@ import { MainProvider } from '../providers/main/main';
     HomePage,
     ListPage,
     MainPage,
-    RegisterComponent
+    RegisterComponent,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { MainProvider } from '../providers/main/main';
     HomePage,
     ListPage,
     MainPage,
-    RegisterComponent
+    RegisterComponent,
+    LoginPage
   ],
   providers: [
     StatusBar,

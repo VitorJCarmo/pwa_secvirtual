@@ -6,6 +6,7 @@ import { RegisterComponent } from '../../components/register/register';
 import { DatabaseProvider, UsuarioList } from '../../providers/database/database';
 import { IonicPage,NavParams, ToastController } from 'ionic-angular';
 import { MainPage } from '../main/main';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -22,7 +23,8 @@ list :any = [
 ]
 logar:any
 logmail :any;
-logpass :any; 
+logpass :any;
+key:any; 
 
   constructor(public navCtrl: NavController,private dbProvider:DatabaseProvider, private toast:ToastController) {
 this.getAll()
@@ -42,11 +44,18 @@ this.getAll()
   logIn() {
       for (let entry of this.list) {
         if(entry.key === this.logmail && entry.nome.password === this.logpass){
-          this.navCtrl.push(ListPage);
+          this.logar = true;
+          this.key = this.list
           }
           else{
-              this.toast.create({ message: 'Dados Invalidos.', duration: 3000, position: 'botton' }).present();
+          this.logar = false;
           }
         }
+        if(this.logar == true){
+        this.navCtrl.push(LoginPage,this.key);
+      }
+      else{
+        this.toast.create({ message: 'Dados Invalidos.', duration: 3000, position: 'botton' }).present();
+      }
     }
 }

@@ -1,34 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http';
+import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
+import 'rxjs/add/operator/map';
 
-
-/*
-  Generated class for the MainProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class MainProvider {
 
-  getApiUrl : string = "http://localhost:3000/api/pacientes";
+  apiUrl : string = "http://localhost:3000/api/pacientes";
   data:any;
 
-  constructor(public navCtrl: NavController, public http: HTTP) {
+  constructor(public navCtrl: NavController, public http: Http) {
   }
   getData(){
-    this.http.get(this.getApiUrl, {},{})
-    .then(data => {
-      this.data = data;
-      console.log(data.status);
-      console.log(data.data); // data received by server
-      console.log(data.headers);
-    })
-    .catch(error => {
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+  
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
     });
   }
 }
