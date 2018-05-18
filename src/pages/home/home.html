@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Secretária Virtual</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Login</h3>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [(ngModel)]="logmail" type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label  floating>Password</ion-label>
+      <ion-input [(ngModel)]="logpass" type="password"></ion-input>
+    </ion-item>
+    <br><br>
+  <div id="actions">
+    <button ion-button (click)="logIn()" block icon-left><ion-icon name="send"></ion-icon> Entrar</button><button (click)="goRegister()" ion-button block icon-left><ion-icon  name="add"></ion-icon>Cadastrar</button>
+  </div>
+<p *ngFor="let user of list">
+  {{user.key}}
+</p>
+  </ion-list>
+
+

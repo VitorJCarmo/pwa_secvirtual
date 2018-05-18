@@ -1,0 +1,37 @@
+<!-- Generated template for the RegisterComponent component -->
+<ion-header>
+    <ion-navbar>
+      <ion-title>Secretária Virtual</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <h3>Cadastro</h3>
+<ion-list>
+
+  <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="model.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="model.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="model.password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Confirmar Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="model.passwordc"></ion-input>
+  </ion-item>
+
+  <br><br>
+
+  <button (click)="save()" id="insert" ion-button round icon-left><ion-icon name="add"></ion-icon>Cadastrar</button>
+
+</ion-list>
