@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DatabaseProvider } from '../../providers/database/database';
 
 @IonicPage()
 @Component({
@@ -15,7 +9,10 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 })
 export class LoginPage {
 user:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toast:ToastController) {
+data: data[] = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast:ToastController, public db:DatabaseProvider) {
+    this.getData()
     this.user = this.navParams.get('key');
     this.toast.create({ message: 'Seja Bem Vindo'+this.user, duration: 3000, position: 'botton' }).present();
   }
@@ -24,4 +21,11 @@ user:any;
     console.log('ionViewDidLoad LoginPage');
   }
 
+  getData(){
+    this.db.getAll()
+    .then(data => {
+      this.data.push(data)
+      console.log(this.data);
+  });
+}
 }
